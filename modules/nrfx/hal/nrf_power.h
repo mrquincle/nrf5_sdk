@@ -397,7 +397,7 @@ __STATIC_INLINE void nrf_power_task_trigger(nrf_power_task_t task);
  *
  * @return Task address.
  */
-__STATIC_INLINE uint32_t nrf_power_task_address_get(nrf_power_task_t task);
+__STATIC_INLINE uintptr_t nrf_power_task_address_get(nrf_power_task_t task);
 
 /**
  * @brief Function for clearing a specific event.
@@ -435,7 +435,7 @@ __STATIC_INLINE bool nrf_power_event_get_and_clear(nrf_power_event_t event);
  *
  * @return Address.
  */
-__STATIC_INLINE uint32_t nrf_power_event_address_get(nrf_power_event_t event);
+__STATIC_INLINE uintptr_t nrf_power_event_address_get(nrf_power_event_t event);
 
 /**
  * @brief Function for enabling selected interrupts.
@@ -790,9 +790,9 @@ __STATIC_INLINE void nrf_power_task_trigger(nrf_power_task_t task)
     *((volatile uint32_t *)((uint8_t *)NRF_POWER + (uint32_t)task)) = 0x1UL;
 }
 
-__STATIC_INLINE uint32_t nrf_power_task_address_get(nrf_power_task_t task)
+__STATIC_INLINE uintptr_t nrf_power_task_address_get(nrf_power_task_t task)
 {
-    return ((uint32_t)NRF_POWER + (uint32_t)task);
+    return ((uintptr_t)NRF_POWER + (uint32_t)task);
 }
 
 __STATIC_INLINE void nrf_power_event_clear(nrf_power_event_t event)
@@ -819,9 +819,9 @@ __STATIC_INLINE bool nrf_power_event_get_and_clear(nrf_power_event_t event)
     return ret;
 }
 
-__STATIC_INLINE uint32_t nrf_power_event_address_get(nrf_power_event_t event)
+__STATIC_INLINE uintptr_t nrf_power_event_address_get(nrf_power_event_t event)
 {
-    return ((uint32_t)NRF_POWER + (uint32_t)event);
+    return ((uintptr_t)NRF_POWER + (uint32_t)event);
 }
 
 __STATIC_INLINE void nrf_power_int_enable(uint32_t int_mask)
